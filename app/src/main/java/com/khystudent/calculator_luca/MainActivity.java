@@ -11,4 +11,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+
+
+    private void addition(){
+
+
+    }
+    private void subtraction(){
+
+    }
+
+    private void division(){
+
+    }
+
+    private void multiplication(){
+
+    }
+
 }
