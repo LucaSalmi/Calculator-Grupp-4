@@ -59,80 +59,86 @@ public class MainActivity extends AppCompatActivity {
         btnlikaMed =findViewById(R.id.btnlikaMed);
 
 
-/**
- * hallå sarah
- */
+
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 operation = 0;
-                show_symbol.setText("-");
+                show_symbol.setText(R.string.sym_min);
             }
         });
+
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 operation = 1;
-                show_symbol.setText("+");
+                show_symbol.setText(R.string.sym_sum);
             }
         });
-        btnDiv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) { operation =3;
-                show_symbol.setText("/");
 
-
-            }
-        });
         btnMulti.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { operation =2;
-                show_symbol.setText("*");
-
+            public void onClick(View view) {
+                operation = 2;
+                show_symbol.setText(R.string.sym_mult);
             }
         });
-        btnRoten.setOnClickListener(new View.OnClickListener() {
+
+        btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { operation =5;
-                show_symbol.setText("√");
-
+            public void onClick(View view) {
+                operation = 3;
+                show_symbol.setText(R.string.sym_div);
             }
         });
+
         btnProc.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { operation =4;
-            enterNumber2.setHint(R.string.enter_procent);
-                show_symbol.setText("%");
-
+            public void onClick(View view) {
+                operation = 4;
+                enterNumber2.setHint(R.string.enter_procent);
+                show_symbol.setText(R.string.sym_procent);
             }
         });
+
+        btnRoten.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                operation = 5;
+                enterNumber1.setText(R.string.sym_ruten);
+            }
+        });
+
+        btnPyta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                operation = 6;
+                show_symbol.setText(R.string.sym_pytagoras);
+            }
+        });
+
         btnAreaCirkel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                operation = 7;
+                show_symbol.setText(R.string.sym_cyrkel_area);
             }
         });
+
         btnVolymCylind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                operation = 8;
+                show_symbol.setText(R.string.sym_cylinder);
             }
         });
-        btnPyta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) { operation =6;
 
-            }
-        });
         btnlikaMed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getTextInput();
                 switcher(operation, intValue1, intValue2);
-                enterNumber1.getText().clear();                 //Raderar Editview fältet efter vi trycker på likaMed
-                enterNumber2.getText().clear();                 //Raderar Editview fältet efter vi trycker på likaMed
-                enterNumber2.setHint(R.string.enter_number);
-
+                clearFields();
             }
         });
 
@@ -218,6 +224,12 @@ public class MainActivity extends AppCompatActivity {
                 double sumPyta = Math.sqrt(Math.pow(intValue1,2) + Math.pow(intValue2,2));
                 PrintFormat(sumPyta);
                 break;
+            case 7:
+                //cyrkel area
+                break;
+            case 8:
+                //cylinders volym
+                break;
         }
     }
 
@@ -227,33 +239,16 @@ public class MainActivity extends AppCompatActivity {
         result.setText(print);
     }
 
-
-    private void minus(int a, int b){
-        int sum = a - b;
-    }
-    private void plus(int a, int b){
-
-    }
-    private void multi(int a, int b){
-        int sum = a * b;
-    }
-    private void div(int a, int b){
-        int sum = a / b;
-    }
-    private void proc(int a, int b){
-        int sum = a*b/100;
-    }
-    private void pyta(int a, int b) {
-        double sum = Math.sqrt(Math.pow(a,2) + Math.pow(b,2));
-    }
-    private void roten(int a, int b){
-        double sum1 = Math.sqrt(a);
-        double sum2 = Math.sqrt(b);
+    /**
+     * Raderar Editview fältet efter vi trycker på likaMed
+      */
+    private void clearFields(){
+        enterNumber1.getText().clear();
+        enterNumber2.getText().clear();
+        enterNumber2.setHint(R.string.enter_number);
     }
 
-
-
-
+    
 }
 
 
