@@ -2,5 +2,14 @@
     <string name="app_name">Kalkylator</string>
     <string name="enter_number">Enter Number</string>
     <string name="enter_procent">Enter procent</string>
+    <string name="sym_sum"> + </string>
+    <string name="sym_min"> - </string>
+    <string name="sym_div"> / </string>
+    <string name="sym_mult"> * </string>
+    <string name="sym_ruten"> √() </string>
+    <string name="sym_procent"> % </string>
+    <string name="sym_pytagoras"> ∆ </string>
+    <string name="sym_cyrkel_area"> 𝞞 </string>
+    <string name="sym_cylinder">Cylinders Volym</string>
 
 </resources>
