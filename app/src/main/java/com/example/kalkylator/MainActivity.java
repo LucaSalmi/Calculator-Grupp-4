@@ -3,6 +3,7 @@ package com.example.kalkylator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,10 +24,15 @@ public class MainActivity extends AppCompatActivity {
 
     TextView head_title;
     EditText enterNumber1;
-    //EditText enterNumber2;
+    EditText enterNumber2;
 
-    //TextView show_symbol;
-    TextView resultat;
+    TextView show_symbol;
+    TextView result;
+
+    boolean isEmpty = true;
+    int intValue1;
+    int intValue2;
+    int operation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         head_title=findViewById(R.id.head_title);
         enterNumber1=findViewById(R.id.enterNumber1);
-        //enterNumber2=findViewById(R.id.enterNumber2);
-        //show_symbol=findViewById(R.id.show_symbol);
-        resultat=findViewById(R.id.resultat);
+        enterNumber2=findViewById(R.id.enterNumber2);
+        show_symbol=findViewById(R.id.show_symbol);
+        result=findViewById(R.id.resultat);
 
         btnVolymCylind=findViewById(R.id.btnVolymCylind);
         btnAreaCirkel=findViewById(R.id.btnAreaCirkel);
@@ -53,13 +59,13 @@ public class MainActivity extends AppCompatActivity {
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                operation = 0;
             }
         });
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                operation = 1;
             }
         });
         btnDiv.setOnClickListener(new View.OnClickListener() {
@@ -107,16 +113,65 @@ public class MainActivity extends AppCompatActivity {
         btnlikaMed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getTextInput();
+                switcher(operation, intValue1, intValue2);
 
             }
         });
 
     }
-    private void switcher(int a){
+
+    private void getTextInput(){
+
+        String value1 = enterNumber1.getText().toString();
+        String value2 = enterNumber2.getText().toString();
+
+        if(TextUtils.isEmpty(value1) && TextUtils.isEmpty(value2)){
+            showError(0);
+            isEmpty = true;
+            return;
+        }else if(TextUtils.isEmpty(value1)){
+            showError(1);
+            isEmpty = true;
+            return;
+        }else if(TextUtils.isEmpty(value2)){
+            showError(2);
+            isEmpty = true;
+            return;
+        }
+        convertToInt(value1, value2);
+    }
+
+    private void convertToInt(String a, String b){
+        intValue1 = Integer.parseInt(a);
+        intValue2 = Integer.parseInt(b);
+    }
+
+    public void showError(int id){
+
+        switch (id){
+
+            case 0:
+                enterNumber1.setError("Error");
+                enterNumber2.setError("Error");
+                break;
+            case 1:
+                enterNumber1.setError("Error");
+                break;
+            case 2:
+                enterNumber2.setError("Error");
+                break;
+
+        }
+    }
+
+
+    private void switcher(int a, int intValue1, int intValue2){
 
         switch (a){
 
-            case 0:
+            case 1:
+                plus(intValue1,intValue2);
 
         }
     }
@@ -125,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void plus(int a, int b){
         int sum = a + b;
+        result.setText(Integer.toString(sum));
     }
     private void multi(int a, int b){
         int sum = a * b;
@@ -138,9 +194,10 @@ public class MainActivity extends AppCompatActivity {
     private void pyta(int a, int b) {
         double sum = Math.sqrt(Math.pow(a,2) + Math.pow(b,2));
     }
-    //private void roten(int a, int b){
-        //int sum = Math;
-    //}
+    private void roten(int a, int b){
+        double sum1 = Math.sqrt(a);
+        double sum2 = Math.sqrt(b);
+    }
 
 
 
