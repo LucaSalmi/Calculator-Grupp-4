@@ -59,7 +59,9 @@ public class MainActivity extends AppCompatActivity {
         btnlikaMed =findViewById(R.id.btnlikaMed);
 
 
-
+/**
+ * hallå sarah
+ */
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
