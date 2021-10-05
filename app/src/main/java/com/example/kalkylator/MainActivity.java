@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     Button btnPlus;
@@ -30,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
     TextView result;
 
     boolean isEmpty = true;
-    int intValue1;
-    int intValue2;
+    double intValue1;
+    double intValue2;
     int operation;
 
     @Override
@@ -56,39 +58,49 @@ public class MainActivity extends AppCompatActivity {
         btnPlus=findViewById(R.id.btnPlus);
         btnlikaMed =findViewById(R.id.btnlikaMed);
 
+
+
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 operation = 0;
+                show_symbol.setText("-");
             }
         });
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 operation = 1;
+                show_symbol.setText("+");
             }
         });
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { operation =3;
+                show_symbol.setText("/");
+
 
             }
         });
         btnMulti.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { operation =2;
+                show_symbol.setText("*");
 
             }
         });
         btnRoten.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { operation =5;
+                show_symbol.setText("√");
 
             }
         });
         btnProc.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { operation =4;
+            enterNumber2.setHint(R.string.enter_procent);
+                show_symbol.setText("%");
 
             }
         });
@@ -106,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         });
         btnPyta.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { operation =6;
 
             }
         });
@@ -115,9 +127,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 getTextInput();
                 switcher(operation, intValue1, intValue2);
+                enterNumber1.getText().clear();                 //Raderar Editview fältet efter vi trycker på likaMed
+                enterNumber2.getText().clear();                 //Raderar Editview fältet efter vi trycker på likaMed
+                enterNumber2.setHint(R.string.enter_number);
 
             }
         });
+
 
     }
 
@@ -139,12 +155,12 @@ public class MainActivity extends AppCompatActivity {
             isEmpty = true;
             return;
         }
-        convertToInt(value1, value2);
+        convertToDouble(value1, value2);
     }
 
-    private void convertToInt(String a, String b){
-        intValue1 = Integer.parseInt(a);
-        intValue2 = Integer.parseInt(b);
+    private void convertToDouble(String a, String b){
+        intValue1 = Double.parseDouble(a);
+        intValue2 = Double.parseDouble(b);
     }
 
     public void showError(int id){
@@ -162,25 +178,59 @@ public class MainActivity extends AppCompatActivity {
                 enterNumber2.setError("Error");
                 break;
 
+
         }
     }
 
 
-    private void switcher(int a, int intValue1, int intValue2){
+    private void switcher(int a, double intValue1, double intValue2){
 
         switch (a){
-
+            case 0:
+                double sumMinus = intValue1 - intValue2;
+                PrintFormat(sumMinus);
+                break;
             case 1:
-                plus(intValue1,intValue2);
+                double sum = intValue1 + intValue2;
+                PrintFormat(sum);
+                break;
 
+            case 2:
+                double sumMulti = intValue1 * intValue2;
+                PrintFormat(sumMulti);
+                break;
+            case 3:
+                double sumDiv = intValue1 / intValue2;
+                PrintFormat(sumDiv);
+                break;
+            case 4:
+                double sumProc = (intValue1*intValue2)/100;
+                PrintFormat(sumProc);
+                break;
+           // KOLLA PÅ IGEN
+            case 5:
+                double sumRoten = Math.sqrt(intValue2);
+                PrintFormat(sumRoten);
+                break;
+            case 6:
+                double sumPyta = Math.sqrt(Math.pow(intValue1,2) + Math.pow(intValue2,2));
+                PrintFormat(sumPyta);
+                break;
         }
     }
+
+    private void PrintFormat(double a){
+        DecimalFormat df = new DecimalFormat("#.#####################");
+        String print = df.format(a);
+        result.setText(print);
+    }
+
+
     private void minus(int a, int b){
         int sum = a - b;
     }
     private void plus(int a, int b){
-        int sum = a + b;
-        result.setText(Integer.toString(sum));
+
     }
     private void multi(int a, int b){
         int sum = a * b;
