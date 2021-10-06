@@ -3,4 +3,6 @@
     <dimen name="small_margin">5dp</dimen>
     <dimen name="medium_margin">10dp</dimen>
     <dimen name="large_margin">20dp</dimen>
+
+    <dimen name="cylinder_text_size">20sp</dimen>
 </resources>
