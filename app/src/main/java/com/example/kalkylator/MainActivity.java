@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     double dbValue1;
     double dbValue2;
     int operation;
-    boolean exception;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 operation = 5;
-                //enterNumber1.setInputType(0);
                 enterNumber1.setVisibility(View.INVISIBLE);
                 show_symbol.setText(R.string.sym_ruten);
             }
@@ -142,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
         btnlikaMed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getTextInput(false);
+                getTextInput();
                 switcher(operation, dbValue1, dbValue2);
                 clearFields();
             }
@@ -151,23 +149,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void getTextInput(boolean exception){
+    private void getTextInput(){
 
         String value1 = enterNumber1.getText().toString();
         String value2 = enterNumber2.getText().toString();
+        String symbol = show_symbol.getText().toString();
 
-        if (exception == false){
-            if(TextUtils.isEmpty(value1) && TextUtils.isEmpty(value2)){
-                showError(0);
-                return;
-            }else if(TextUtils.isEmpty(value1)){
-                showError(1);
-                return;
-            }else if(TextUtils.isEmpty(value2)){
-                showError(2);
-                return;
-            }
+        if (TextUtils.isEmpty(symbol)){
+            showError(3);
+            return;
         }
+
+        if(TextUtils.isEmpty(value1) && TextUtils.isEmpty(value2)){
+            showError(0);
+            return;
+        }else if(TextUtils.isEmpty(value1)){
+            showError(1);
+            return;
+        }else if(TextUtils.isEmpty(value2)){
+            showError(2);
+            return;
+        }
+
 
         convertToDouble(value1, value2);
     }
@@ -191,7 +194,9 @@ public class MainActivity extends AppCompatActivity {
             case 2:
                 enterNumber2.setError("Error");
                 break;
-
+            case 3:
+                result.setError("Error");
+                break;
 
         }
     }
@@ -252,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
         enterNumber1.getText().clear();
         enterNumber2.getText().clear();
         enterNumber2.setHint(R.string.enter_number);
+        show_symbol.setText("");
     }
 
 
