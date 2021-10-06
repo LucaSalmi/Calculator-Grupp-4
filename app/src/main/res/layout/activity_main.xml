@@ -177,11 +177,11 @@
             <TextView
                 android:id="@+id/resultat"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/large_margin"
-                android:layout_marginBottom="@dimen/large_margin"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_margin="@dimen/medium_margin"
                 android:layout_weight="2.5"
+                android:background="@drawable/result_box"
                 android:text="@string/result"
                 android:textAlignment="center" />
 

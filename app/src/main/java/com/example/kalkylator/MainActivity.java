@@ -99,9 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 enterNumber1.setHint(R.string.enter_procent);
                 show_symbol.setText(R.string.sym_procent);
                 procent();
-
-
-
             }
         });
 
