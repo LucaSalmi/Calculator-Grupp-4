@@ -22,14 +22,14 @@ public class MainActivity extends AppCompatActivity {
     Button btnPyta;
     Button btnAreaCirkel;
     Button btnVolymCylind;
-    Button btnlikaMed;
+    Button btnLikaMed;
 
-    TextView head_title;
-    EditText enterNumber1;
-    EditText enterNumber2;
+    TextView twHeadTitle;
+    EditText etEnterNumber1;
+    EditText etEnterNumber2;
 
-    TextView show_symbol;
-    TextView result;
+    TextView twShowSymbol;
+    TextView twResult;
 
     double dbValue1;
     double dbValue2;
@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        head_title=findViewById(R.id.head_title);
-        enterNumber1=findViewById(R.id.enterNumber1);
-        enterNumber2=findViewById(R.id.enterNumber2);
-        show_symbol=findViewById(R.id.show_symbol);
-        result=findViewById(R.id.resultat);
+        twHeadTitle =findViewById(R.id.head_title);
+        etEnterNumber1 =findViewById(R.id.enterNumber1);
+        etEnterNumber2 =findViewById(R.id.enterNumber2);
+        twShowSymbol =findViewById(R.id.show_symbol);
+        twResult =findViewById(R.id.resultat);
 
         btnVolymCylind=findViewById(R.id.btnVolymCylind);
         btnAreaCirkel=findViewById(R.id.btnAreaCirkel);
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         btnDiv=findViewById(R.id.btnDiv);
         btnMinus=findViewById(R.id.btnMinus);
         btnPlus=findViewById(R.id.btnPlus);
-        btnlikaMed =findViewById(R.id.btnlikaMed);
+        btnLikaMed =findViewById(R.id.btnlikaMed);
 
 
         btnMinus.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 resetText();
                 operation = 0;
-                show_symbol.setText(R.string.sym_min);
+                twShowSymbol.setText(R.string.sym_min);
 
             }
         });
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 resetText();
                 operation = 1;
-                show_symbol.setText(R.string.sym_sum);
+                twShowSymbol.setText(R.string.sym_sum);
             }
         });
 
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 resetText();
                 operation = 2;
-                show_symbol.setText(R.string.sym_mult);
+                twShowSymbol.setText(R.string.sym_mult);
             }
         });
 
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 resetText();
                 operation = 3;
-                show_symbol.setText(R.string.sym_div);
+                twShowSymbol.setText(R.string.sym_div);
             }
         });
 
@@ -102,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 resetText();
                 operation = 4;
-                enterNumber1.setHint(R.string.enter_procent);
-                show_symbol.setText(R.string.procent_of);
+                etEnterNumber1.setHint(R.string.enter_procent);
+                twShowSymbol.setText(R.string.procent_of);
             }
         });
 
@@ -113,8 +113,8 @@ public class MainActivity extends AppCompatActivity {
                 resetText();
                 operation = 5;
                 isTwoNumber = false;
-                enterNumber1.setVisibility(View.GONE);
-                show_symbol.setText(R.string.sym_ruten);
+                etEnterNumber1.setVisibility(View.GONE);
+                twShowSymbol.setText(R.string.sym_ruten);
 
             }
         });
@@ -124,10 +124,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 resetText();
                 operation = 6;
-                show_symbol.setText(R.string.sym_pytagoras);
-                head_title.setText(R.string.formel_pyta);
-                enterNumber1.setHint(R.string.text_value_pytaA);
-                enterNumber2.setHint(R.string.text_value_pytaB);
+                twShowSymbol.setText(R.string.sym_pytagoras);
+                twHeadTitle.setText(R.string.formel_pyta);
+                etEnterNumber1.setHint(R.string.text_value_pytaA);
+                etEnterNumber2.setHint(R.string.text_value_pytaB);
 
             }
         });
@@ -138,10 +138,10 @@ public class MainActivity extends AppCompatActivity {
                 resetText();
                 operation = 7;
                 isTwoNumber = false;
-                enterNumber1.setVisibility(View.GONE);
-                show_symbol.setText(R.string.sym_cyrkel_area);
-                head_title.setText(R.string.formel_cirkel);
-                enterNumber2.setHint(R.string.text_value_radius);
+                etEnterNumber1.setVisibility(View.GONE);
+                twShowSymbol.setText(R.string.sym_cyrkel_area);
+                twHeadTitle.setText(R.string.formel_cirkel);
+                etEnterNumber2.setHint(R.string.text_value_radius);
             }
         });
 
@@ -150,15 +150,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 resetText();
                 operation = 8;
-                show_symbol.setText(R.string.sym_cylinder);
-                head_title.setText(R.string.formel_cylind);
-                enterNumber1.setHint(R.string.text_value_radius);
-                enterNumber2.setHint(R.string.text_value1_cylinder_height);
-                show_symbol.setTextSize(18);
+                twShowSymbol.setText(R.string.sym_cylinder);
+                twHeadTitle.setText(R.string.formel_cylind);
+                etEnterNumber1.setHint(R.string.text_value_radius);
+                etEnterNumber2.setHint(R.string.text_value1_cylinder_height);
+                twShowSymbol.setTextSize(18);
             }
         });
 
-        btnlikaMed.setOnClickListener(new View.OnClickListener() {
+        btnLikaMed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getTextInput();
@@ -172,9 +172,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void getTextInput() {
 
-        String value1 = enterNumber1.getText().toString();
-        String value2 = enterNumber2.getText().toString();
-        String symbol = show_symbol.getText().toString();
+        String value1 = etEnterNumber1.getText().toString();
+        String value2 = etEnterNumber2.getText().toString();
+        String symbol = twShowSymbol.getText().toString();
 
         if (isTwoNumber == true) {
 
@@ -203,17 +203,17 @@ public class MainActivity extends AppCompatActivity {
         switch (id){
 
             case 0:
-                enterNumber1.setError("Enter Number");
-                enterNumber2.setError("Enter Number");
+                etEnterNumber1.setError("Enter Number");
+                etEnterNumber2.setError("Enter Number");
                 break;
             case 1:
-                enterNumber1.setError("Enter Number");
+                etEnterNumber1.setError("Enter Number");
                 break;
             case 2:
-                enterNumber2.setError("Enter Number");
+                etEnterNumber2.setError("Enter Number");
                 break;
             case 3:
-                result.setError("Enter Number");
+                twResult.setError("Enter Number");
                 break;
         }
     }
@@ -222,67 +222,69 @@ public class MainActivity extends AppCompatActivity {
 
     private void switcher(int operation, double dbValue1, double dbValue2){
 
+        double result;
+
         switch (operation){
-            case 0:
-                double sumMinus = dbValue1 - dbValue2;
-                PrintFormat(sumMinus);
+            case 0: //subtraction
+                result = dbValue1 - dbValue2;
+                printFormat(result);
                 break;
-            case 1:
-                double sum = dbValue1 + dbValue2;
-                PrintFormat(sum);
+            case 1: //addition
+                result = dbValue1 + dbValue2;
+                printFormat(result);
                 break;
-            case 2:
-                double sumMulti = dbValue1 * dbValue2;
-                PrintFormat(sumMulti);
+            case 2: //multiplication
+                result = dbValue1 * dbValue2;
+                printFormat(result);
                 break;
-            case 3:
-                double sumDiv = dbValue1 / dbValue2;
-                PrintFormat(sumDiv);
+            case 3: //division
+                result = dbValue1 / dbValue2;
+                printFormat(result);
                 break;
-            case 4:
-                double sumProc = (dbValue2*dbValue1)/100;
-                PrintFormat(sumProc);
+            case 4: //percentage
+                result = (dbValue2*dbValue1)/100;
+                printFormat(result);
                 break;
-            case 5:
-                double sumRoten = Math.sqrt(dbValue2);
-                PrintFormat(sumRoten);
+            case 5: //root
+                result = Math.sqrt(dbValue2);
+                printFormat(result);
                 break;
-            case 6:
-                double sumPyta = Math.sqrt(Math.pow(dbValue1,2) + Math.pow(dbValue2,2));
-                PrintFormat(sumPyta);
+            case 6: //Pythagoras
+                result = Math.sqrt(Math.pow(dbValue1,2) + Math.pow(dbValue2,2));
+                printFormat(result);
                 break;
-            case 7:
-                double sumArea = Math.PI*(dbValue2*dbValue2);
-                PrintFormat(sumArea);
+            case 7: //Area of a circle
+                result = Math.PI*(dbValue2*dbValue2);
+                printFormat(result);
                 break;
-            case 8:
-                double sumVolym = Math.PI*(dbValue1*dbValue1)*dbValue2;
-                PrintFormat(sumVolym);
+            case 8: //Cylinder volume
+                result = Math.PI*(dbValue1*dbValue1)*dbValue2;
+                printFormat(result);
                 break;
         }
     }
 
-    private void PrintFormat(double a){
+    private void printFormat(double a){
         DecimalFormat df = new DecimalFormat("#.#####################");
         String print = df.format(a);
-        result.setText(print);
+        twResult.setText(print);
     }
 
     /**
      * Raderar Editview fältet efter vi trycker på likaMed
       */
     private void clearFields(){
-        enterNumber1.getText().clear();
-        enterNumber2.getText().clear();
-        show_symbol.setText("");
+        etEnterNumber1.getText().clear();
+        etEnterNumber2.getText().clear();
+        twShowSymbol.setText("");
         isTwoNumber = true;
     }
     private void resetText(){
 
-        head_title.setText(R.string.app_name);
-        enterNumber1.setVisibility(View.VISIBLE);
-        enterNumber1.setHint(R.string.enter_number);
-        enterNumber2.setHint(R.string.enter_number);
+        twHeadTitle.setText(R.string.app_name);
+        etEnterNumber1.setVisibility(View.VISIBLE);
+        etEnterNumber1.setHint(R.string.enter_number);
+        etEnterNumber2.setHint(R.string.enter_number);
 
     }
 }
