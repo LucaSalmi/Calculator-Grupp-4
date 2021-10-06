@@ -2,7 +2,7 @@
     <string name="app_name">Calculator</string>
 
     <string name="enter_number">Enter Number</string>
-    <string name="enter_procent">Enter Procent</string>
+    <string name="enter_procent">Enter Percent</string>
     
 
     <string name="sym_sum"> + </string>
