@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
     TextView show_symbol;
     TextView result;
 
-    boolean isEmpty = true;
     double dbValue1;
     double dbValue2;
     int operation;
+    boolean exception;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +96,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 operation = 4;
-                enterNumber2.setHint(R.string.enter_procent);
+                enterNumber1.setHint(R.string.enter_procent);
                 show_symbol.setText(R.string.sym_procent);
+                procent();
+
+
+
             }
         });
 
@@ -105,8 +109,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 operation = 5;
-                show_symbol.setText("");
-                enterNumber1.setText(R.string.sym_ruten);
+                //enterNumber1.setInputType(0);
+                enterNumber1.setVisibility(View.INVISIBLE);
+                show_symbol.setText(R.string.sym_ruten);
             }
         });
 
@@ -137,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         btnlikaMed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getTextInput();
+                getTextInput(false);
                 switcher(operation, dbValue1, dbValue2);
                 clearFields();
             }
@@ -146,24 +151,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void getTextInput(){
+    private void getTextInput(boolean exception){
 
         String value1 = enterNumber1.getText().toString();
         String value2 = enterNumber2.getText().toString();
 
-        if(TextUtils.isEmpty(value1) && TextUtils.isEmpty(value2)){
-            showError(0);
-            isEmpty = true;
-            return;
-        }else if(TextUtils.isEmpty(value1)){
-            showError(1);
-            isEmpty = true;
-            return;
-        }else if(TextUtils.isEmpty(value2)){
-            showError(2);
-            isEmpty = true;
-            return;
+        if (exception == false){
+            if(TextUtils.isEmpty(value1) && TextUtils.isEmpty(value2)){
+                showError(0);
+                return;
+            }else if(TextUtils.isEmpty(value1)){
+                showError(1);
+                return;
+            }else if(TextUtils.isEmpty(value2)){
+                showError(2);
+                return;
+            }
         }
+
         convertToDouble(value1, value2);
     }
 
@@ -192,37 +197,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void switcher(int a, double intValue1, double intValue2){
+    private void switcher(int a, double dbValue1, double dbValue2){
 
         switch (a){
             case 0:
-                double sumMinus = intValue1 - intValue2;
+                double sumMinus = dbValue1 - dbValue2;
                 PrintFormat(sumMinus);
                 break;
             case 1:
-                double sum = intValue1 + intValue2;
+                double sum = dbValue1 + dbValue2;
                 PrintFormat(sum);
                 break;
 
             case 2:
-                double sumMulti = intValue1 * intValue2;
+                double sumMulti = dbValue1 * dbValue2;
                 PrintFormat(sumMulti);
                 break;
             case 3:
-                double sumDiv = intValue1 / intValue2;
+                double sumDiv = dbValue1 / dbValue2;
                 PrintFormat(sumDiv);
                 break;
             case 4:
-                double sumProc = (intValue1*intValue2)/100;
+                double sumProc = (dbValue2*dbValue1)/100;
                 PrintFormat(sumProc);
                 break;
            // KOLLA PÅ IGEN
             case 5:
-                double sumRoten = Math.sqrt(intValue2);
+                double sumRoten = Math.sqrt(dbValue2);
                 PrintFormat(sumRoten);
                 break;
             case 6:
-                double sumPyta = Math.sqrt(Math.pow(intValue1,2) + Math.pow(intValue2,2));
+                double sumPyta = Math.sqrt(Math.pow(dbValue1,2) + Math.pow(dbValue2,2));
                 PrintFormat(sumPyta);
                 break;
             case 7:
@@ -247,6 +252,21 @@ public class MainActivity extends AppCompatActivity {
         enterNumber1.getText().clear();
         enterNumber2.getText().clear();
         enterNumber2.setHint(R.string.enter_number);
+    }
+
+
+    private void procent(){
+
+        String value1 = enterNumber1.getText().toString();
+
+        if(TextUtils.isEmpty(value1)){
+            showError(1);
+            return;
+        }
+
+        double temp = Double.parseDouble(value1);
+        double sumProc = (temp*1)/100;
+        PrintFormat(sumProc);
     }
 
     
