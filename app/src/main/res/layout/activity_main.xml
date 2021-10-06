@@ -174,16 +174,26 @@
                 android:layout_weight="1"
                 android:text="@string/sym_likaMed" />
 
-            <TextView
-                android:id="@+id/resultat"
+            <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/large_margin"
-                android:layout_marginBottom="@dimen/large_margin"
+                android:src="@drawable/box"
                 android:layout_weight="2.5"
-                android:text="@string/result"
-                android:textAlignment="center" />
+                >
+
+                <TextView
+                    android:id="@+id/resultat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:layout_marginBottom="@dimen/large_margin"
+                    android:layout_weight="2.5"
+                    android:text="@string/result"
+                    android:textAlignment="center" />
+
+            </ImageView>
+
 
         </LinearLayout>
 

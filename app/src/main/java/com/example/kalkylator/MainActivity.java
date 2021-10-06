@@ -98,9 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 operation = 4;
                 enterNumber1.setHint(R.string.enter_procent);
                 show_symbol.setText(R.string.sym_procent);
-                procent();
-
-
 
             }
         });
@@ -268,23 +265,6 @@ public class MainActivity extends AppCompatActivity {
         enterNumber1.setVisibility(View.VISIBLE);
         istwoNumber = true;
     }
-
-
-    private void procent(){
-
-        String value1 = enterNumber1.getText().toString();
-
-        if(TextUtils.isEmpty(value1)){
-            showError(1);
-            return;
-        }
-
-        double temp = Double.parseDouble(value1);
-        double sumProc = (temp*1)/100;
-        PrintFormat(sumProc);
-    }
-
-    
 }
 
 
