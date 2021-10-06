@@ -15,9 +15,9 @@
     <string name="sym_cyrkel_area"> 𝞞 </string>
     <string name="sym_cylinder">Cylinder Volume</string>
     <string name="sym_likaMed">=</string>
-    <string name="formel_pyta">a2+b2=c2</string>
-    <string name="formel_cirkel">A = PI * r2</string>
-    <string name="formel_cylind">V = PI * r2 * h</string>
+    <string name="formel_pyta">C = √a²+b²</string>
+    <string name="formel_cirkel">A = πr²</string>
+    <string name="formel_cylind">V = πr²h</string>
 
     <string name="text_value_radius">Enter Radius</string>
     <string name="text_value_pytaA">Enter a</string>
