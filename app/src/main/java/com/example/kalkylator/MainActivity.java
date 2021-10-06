@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 head_title.setText(R.string.formel_cylind);
                 enterNumber1.setHint(R.string.text_value_radius);
                 enterNumber2.setHint(R.string.text_value1_cylinder_height);
-                show_symbol.setTextSize(R.dimen.cylinder_text_size);
+                show_symbol.setTextSize(18);
             }
         });
 
