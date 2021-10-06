@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 operation = 5;
+                show_symbol.setText("");
                 enterNumber1.setText(R.string.sym_ruten);
             }
         });
