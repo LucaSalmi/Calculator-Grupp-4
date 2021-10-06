@@ -184,7 +184,6 @@ public class MainActivity extends AppCompatActivity {
                 showError(1);
                 return;
             }
-
             dbValue1 = Double.parseDouble(value1);
         }
 
@@ -230,7 +229,6 @@ public class MainActivity extends AppCompatActivity {
                 double sum = dbValue1 + dbValue2;
                 PrintFormat(sum);
                 break;
-
             case 2:
                 double sumMulti = dbValue1 * dbValue2;
                 PrintFormat(sumMulti);
