@@ -18,6 +18,11 @@
     <string name="formel_cirkel">A = PI * r2</string>
     <string name="formel_cylind">V = PI * r2 * h</string>
 
+    <string name="text_value_radius">Skriv in radius</string>
+    <string name="text_value_pyta">Sidans längd</string>
+    <string name="text_value_roten">Skriv in radikand</string>
+    <string name="text_value1_cylinder">Skriv in höjden</string>
+
     <string name="result">Result Here</string>
 
 </resources>
