@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
     TextView result;
 
     boolean isEmpty = true;
-    double intValue1;
-    double intValue2;
+    double dbValue1;
+    double dbValue2;
     int operation;
 
     @Override
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 getTextInput();
-                switcher(operation, intValue1, intValue2);
+                switcher(operation, dbValue1, dbValue2);
                 clearFields();
             }
         });
@@ -167,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void convertToDouble(String a, String b){
-        intValue1 = Double.parseDouble(a);
-        intValue2 = Double.parseDouble(b);
+        dbValue1 = Double.parseDouble(a);
+        dbValue2 = Double.parseDouble(b);
     }
 
     public void showError(int id){
