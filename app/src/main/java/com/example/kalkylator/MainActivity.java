@@ -265,6 +265,7 @@ public class MainActivity extends AppCompatActivity {
         enterNumber2.getText().clear();
         enterNumber2.setHint(R.string.enter_number);
         show_symbol.setText("");
+        enterNumber1.setVisibility(View.VISIBLE);
     }
 
 
