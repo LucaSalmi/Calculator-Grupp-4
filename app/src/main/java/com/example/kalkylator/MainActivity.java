@@ -168,14 +168,15 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            if (TextUtils.isEmpty(symbol)) {
-                showError(3);
-                return;
-            } else if (TextUtils.isEmpty(value2)) {
-             showError(2);
-             return;
-            }
             dbValue1 = Double.parseDouble(value1);
+        }
+        
+        if (TextUtils.isEmpty(symbol)) {
+            showError(3);
+            return;
+        } else if (TextUtils.isEmpty(value2)) {
+            showError(2);
+            return;
         }
         dbValue2 = Double.parseDouble(value2);
 
