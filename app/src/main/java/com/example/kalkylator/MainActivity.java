@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     double dbValue1;
     double dbValue2;
     int operation;
-    boolean istwoNumber = true;
+    boolean isTwoNumber = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         btnMinus=findViewById(R.id.btnMinus);
         btnPlus=findViewById(R.id.btnPlus);
         btnlikaMed =findViewById(R.id.btnlikaMed);
-
 
 
         btnMinus.setOnClickListener(new View.OnClickListener() {
@@ -112,11 +111,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 resetText();
                 operation = 5;
-                istwoNumber = false;
+                isTwoNumber = false;
                 enterNumber1.setVisibility(View.GONE);
                 show_symbol.setText(R.string.sym_ruten);
 
-                           }
+            }
         });
 
         btnPyta.setOnClickListener(new View.OnClickListener() {
@@ -137,13 +136,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 resetText();
                 operation = 7;
-                istwoNumber = false;
+                isTwoNumber = false;
                 enterNumber1.setVisibility(View.GONE);
                 show_symbol.setText(R.string.sym_cyrkel_area);
                 head_title.setText(R.string.formel_cirkel);
                 enterNumber2.setHint(R.string.text_value_radius);
-
-
             }
         });
 
@@ -156,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
                 head_title.setText(R.string.formel_cylind);
                 enterNumber1.setHint(R.string.text_value_radius);
                 enterNumber2.setHint(R.string.text_value1_cylinder_height);
-
             }
         });
 
@@ -169,14 +165,14 @@ public class MainActivity extends AppCompatActivity {
                 resetText();
             }
         });
-
     }
+
     private void getTextInput() {
 
         String value2 = enterNumber2.getText().toString();
         String symbol = show_symbol.getText().toString();
 
-        if (istwoNumber == true) {
+        if (isTwoNumber == true) {
 
             String value1 = enterNumber1.getText().toString();
 
@@ -199,7 +195,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         dbValue2 = Double.parseDouble(value2);
-
     }
 
     public void showError(int id){
@@ -219,7 +214,6 @@ public class MainActivity extends AppCompatActivity {
             case 3:
                 result.setError("Error");
                 break;
-
         }
     }
 
@@ -268,9 +262,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     *
-     */
     private void PrintFormat(double a){
         DecimalFormat df = new DecimalFormat("#.#####################");
         String print = df.format(a);
@@ -284,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
         enterNumber1.getText().clear();
         enterNumber2.getText().clear();
         show_symbol.setText("");
-        istwoNumber = true;
+        isTwoNumber = true;
     }
     private void resetText(){
 
