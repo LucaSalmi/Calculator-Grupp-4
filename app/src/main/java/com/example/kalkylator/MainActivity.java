@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     int operation;
     boolean isTwoNumber = true;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -168,14 +169,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     private void getTextInput() {
 
+        String value1 = enterNumber1.getText().toString();
         String value2 = enterNumber2.getText().toString();
         String symbol = show_symbol.getText().toString();
 
         if (isTwoNumber == true) {
-
-            String value1 = enterNumber1.getText().toString();
 
             if (TextUtils.isEmpty(value1) && TextUtils.isEmpty(value2)) {
                 showError(0);
@@ -218,9 +219,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void switcher(int a, double dbValue1, double dbValue2){
 
-        switch (a){
+    private void switcher(int operation, double dbValue1, double dbValue2){
+
+        switch (operation){
             case 0:
                 double sumMinus = dbValue1 - dbValue2;
                 PrintFormat(sumMinus);
@@ -244,7 +246,6 @@ public class MainActivity extends AppCompatActivity {
             case 5:
                 double sumRoten = Math.sqrt(dbValue2);
                 PrintFormat(sumRoten);
-                dbValue1 = 0;
                 break;
             case 6:
                 double sumPyta = Math.sqrt(Math.pow(dbValue1,2) + Math.pow(dbValue2,2));
