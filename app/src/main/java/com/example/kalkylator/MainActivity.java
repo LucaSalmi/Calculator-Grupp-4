@@ -153,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
                 head_title.setText(R.string.formel_cylind);
                 enterNumber1.setHint(R.string.text_value_radius);
                 enterNumber2.setHint(R.string.text_value1_cylinder_height);
+                show_symbol.setTextSize(R.dimen.cylinder_text_size);
             }
         });
 
@@ -201,17 +202,17 @@ public class MainActivity extends AppCompatActivity {
         switch (id){
 
             case 0:
-                enterNumber1.setError("Error");
-                enterNumber2.setError("Error");
+                enterNumber1.setError("Enter Number");
+                enterNumber2.setError("Enter Number");
                 break;
             case 1:
-                enterNumber1.setError("Error");
+                enterNumber1.setError("Enter Number");
                 break;
             case 2:
-                enterNumber2.setError("Error");
+                enterNumber2.setError("Enter Number");
                 break;
             case 3:
-                result.setError("Error");
+                result.setError("Enter Number");
                 break;
         }
     }
