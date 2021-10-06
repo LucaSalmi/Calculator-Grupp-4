@@ -63,14 +63,17 @@ public class MainActivity extends AppCompatActivity {
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetText();
                 operation = 0;
                 show_symbol.setText(R.string.sym_min);
+
             }
         });
 
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetText();
                 operation = 1;
                 show_symbol.setText(R.string.sym_sum);
             }
@@ -79,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         btnMulti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetText();
                 operation = 2;
                 show_symbol.setText(R.string.sym_mult);
             }
@@ -87,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetText();
                 operation = 3;
                 show_symbol.setText(R.string.sym_div);
             }
@@ -95,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         btnProc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetText();
                 operation = 4;
                 enterNumber1.setHint(R.string.enter_procent);
                 show_symbol.setText(R.string.sym_procent);
@@ -105,36 +111,47 @@ public class MainActivity extends AppCompatActivity {
         btnRoten.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetText();
                 operation = 5;
                 istwoNumber = false;
                 enterNumber1.setVisibility(View.GONE);
                 show_symbol.setText(R.string.sym_ruten);
-            }
+
+                           }
         });
 
         btnPyta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetText();
                 operation = 6;
                 show_symbol.setText(R.string.sym_pytagoras);
+                head_title.setText(R.string.formel_pyta);
+
             }
         });
 
         btnAreaCirkel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetText();
                 operation = 7;
                 istwoNumber = false;
                 enterNumber1.setVisibility(View.GONE);
                 show_symbol.setText(R.string.sym_cyrkel_area);
+                head_title.setText(R.string.formel_cirkel);
+
+
             }
         });
 
         btnVolymCylind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetText();
                 operation = 8;
                 show_symbol.setText(R.string.sym_cylinder);
+                head_title.setText(R.string.formel_cylind);
             }
         });
 
@@ -144,12 +161,11 @@ public class MainActivity extends AppCompatActivity {
                 getTextInput();
                 switcher(operation, dbValue1, dbValue2);
                 clearFields();
+                resetText();
             }
         });
 
-
     }
-
     private void getTextInput() {
 
         String value2 = enterNumber2.getText().toString();
@@ -180,8 +196,6 @@ public class MainActivity extends AppCompatActivity {
         dbValue2 = Double.parseDouble(value2);
 
     }
-
-
 
     public void showError(int id){
 
@@ -233,6 +247,7 @@ public class MainActivity extends AppCompatActivity {
             case 5:
                 double sumRoten = Math.sqrt(dbValue2);
                 PrintFormat(sumRoten);
+                dbValue1 = 0;
                 break;
             case 6:
                 double sumPyta = Math.sqrt(Math.pow(dbValue1,2) + Math.pow(dbValue2,2));
@@ -248,6 +263,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     */
     private void PrintFormat(double a){
         DecimalFormat df = new DecimalFormat("#.#####################");
         String print = df.format(a);
@@ -260,12 +278,17 @@ public class MainActivity extends AppCompatActivity {
     private void clearFields(){
         enterNumber1.getText().clear();
         enterNumber2.getText().clear();
-        enterNumber2.setHint(R.string.enter_number);
         show_symbol.setText("");
-        enterNumber1.setVisibility(View.VISIBLE);
         istwoNumber = true;
     }
+    private void resetText(){
 
+        head_title.setText(R.string.app_name);
+        enterNumber1.setVisibility(View.VISIBLE);
+        enterNumber1.setHint(R.string.enter_number);
+        enterNumber2.setHint(R.string.enter_number);
+
+    }
 
     private void procent(){
 
