@@ -10,7 +10,7 @@
     <string name="sym_div"> / </string>
     <string name="sym_mult"> * </string>
     <string name="sym_ruten"> √() </string>
-    <string name="sym_procent"> % of </string>
+    <string name="sym_procent"> % </string>
     <string name="sym_pytagoras"> ∆ </string>
     <string name="sym_cyrkel_area"> 𝞞 </string>
     <string name="sym_cylinder">Cylinder Volume</string>
@@ -23,6 +23,7 @@
     <string name="text_value_pytaA">Enter a</string>
     <string name="text_value_pytaB">Enter b</string>
     <string name="text_value1_cylinder_height">Enter Height</string>
+    <string name="procent_of">% of</string>
 
     <string name="result">Result Here</string>
 

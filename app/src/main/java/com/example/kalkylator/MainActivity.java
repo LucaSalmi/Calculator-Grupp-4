@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 resetText();
                 operation = 4;
                 enterNumber1.setHint(R.string.enter_procent);
-                show_symbol.setText(R.string.sym_procent);
+                show_symbol.setText(R.string.procent_of);
             }
         });
 
