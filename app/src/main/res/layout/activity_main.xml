@@ -75,7 +75,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/medium_margin"
                 android:layout_marginVertical="@dimen/small_margin"
-                android:text="@string/sym_sum" />
+                android:text="@string/sym_sum"
+                android:textSize="@dimen/knapp_text_size"/>
 
             <Button
                 android:id="@+id/btnMinus"
@@ -83,7 +84,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/medium_margin"
                 android:layout_marginVertical="@dimen/small_margin"
-                android:text="@string/sym_min" />
+                android:text="@string/sym_min"
+                android:textSize="@dimen/knapp_text_size"/>
 
             <Button
                 android:id="@+id/btnDiv"
@@ -91,7 +93,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/medium_margin"
                 android:layout_marginVertical="@dimen/small_margin"
-                android:text="@string/sym_div" />
+                android:text="@string/sym_div"
+                android:textSize="@dimen/knapp_text_size"/>
 
         </LinearLayout>
 
@@ -107,7 +110,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/medium_margin"
                 android:layout_marginVertical="@dimen/small_margin"
-                android:text="@string/sym_mult" />
+                android:text="@string/sym_mult"
+                android:textSize="@dimen/knapp_text_size"/>
 
             <Button
                 android:id="@+id/btnRoten"
@@ -115,7 +119,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/medium_margin"
                 android:layout_marginVertical="@dimen/small_margin"
-                android:text="@string/sym_ruten" />
+                android:text="@string/sym_ruten"
+                android:textSize="@dimen/knapp_text_size"/>
 
             <Button
                 android:id="@+id/btnProc"
@@ -123,7 +128,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/medium_margin"
                 android:layout_marginVertical="@dimen/small_margin"
-                android:text="@string/sym_procent" />
+                android:text="@string/sym_procent"
+                android:textSize="@dimen/knapp_text_size"/>
 
         </LinearLayout>
 
@@ -140,8 +146,7 @@
                 android:layout_marginHorizontal="@dimen/medium_margin"
                 android:layout_marginVertical="@dimen/small_margin"
                 android:text="@string/sym_pytagoras"
-
-                />
+                android:textSize="@dimen/knapp_text_size"/>
 
             <Button
                 android:id="@+id/btnAreaCirkel"
@@ -149,16 +154,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/medium_margin"
                 android:layout_marginVertical="@dimen/small_margin"
-                android:text="@string/sym_cyrkel_area" />
+                android:text="@string/sym_cyrkel_area"
+                android:textSize="@dimen/knapp_text_size"/>
 
             <Button
                 android:id="@+id/btnVolymCylind"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/medium_margin"
                 android:layout_marginVertical="@dimen/small_margin"
                 android:text="@string/sym_cylinder"
-                android:textSize="10sp"
+                android:textSize="@dimen/knapp_text_size"
                 />
 
         </LinearLayout>
