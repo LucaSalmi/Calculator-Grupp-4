@@ -127,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 operation = 7;
+                istwoNumber = false;
+                enterNumber1.setVisibility(View.GONE);
                 show_symbol.setText(R.string.sym_cyrkel_area);
             }
         });
@@ -170,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
             dbValue1 = Double.parseDouble(value1);
         }
-        
+
         if (TextUtils.isEmpty(symbol)) {
             showError(3);
             return;
@@ -240,7 +242,8 @@ public class MainActivity extends AppCompatActivity {
                 PrintFormat(sumPyta);
                 break;
             case 7:
-                //cyrkel area
+                double sumArea = Math.PI*(dbValue2*dbValue2);
+                PrintFormat(sumArea);
                 break;
             case 8:
                 //cylinders volym
