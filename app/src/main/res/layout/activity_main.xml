@@ -186,7 +186,8 @@
                 android:text="@string/result"
                 android:textAlignment="center"
                 android:textColor="@color/pink"
-                android:textSize="22.5sp"/>
+                android:textSize="22.5sp"
+                android:maxLines="1"/>
 
         </LinearLayout>
 

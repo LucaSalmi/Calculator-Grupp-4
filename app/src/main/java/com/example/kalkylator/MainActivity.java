@@ -127,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
                 operation = 6;
                 show_symbol.setText(R.string.sym_pytagoras);
                 head_title.setText(R.string.formel_pyta);
+                enterNumber1.setHint(R.string.text_value_pytaA);
+                enterNumber2.setHint(R.string.text_value_pytaB);
 
             }
         });
@@ -140,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 enterNumber1.setVisibility(View.GONE);
                 show_symbol.setText(R.string.sym_cyrkel_area);
                 head_title.setText(R.string.formel_cirkel);
+                enterNumber2.setHint(R.string.text_value_radius);
 
 
             }
@@ -152,6 +155,9 @@ public class MainActivity extends AppCompatActivity {
                 operation = 8;
                 show_symbol.setText(R.string.sym_cylinder);
                 head_title.setText(R.string.formel_cylind);
+                enterNumber1.setHint(R.string.text_value_radius);
+                enterNumber2.setHint(R.string.text_value1_cylinder_height);
+
             }
         });
 
@@ -243,7 +249,6 @@ public class MainActivity extends AppCompatActivity {
                 double sumProc = (dbValue2*dbValue1)/100;
                 PrintFormat(sumProc);
                 break;
-           // KOLLA PÅ IGEN
             case 5:
                 double sumRoten = Math.sqrt(dbValue2);
                 PrintFormat(sumRoten);
@@ -258,7 +263,8 @@ public class MainActivity extends AppCompatActivity {
                 PrintFormat(sumArea);
                 break;
             case 8:
-                //cylinders volym
+                double sumVolym = Math.PI*(dbValue1*dbValue1)*dbValue2;
+                PrintFormat(sumVolym);
                 break;
         }
     }
