@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnAreaCirkel;
     Button btnVolymCylind;
     Button btnLikaMed;
+    Button btnClearAll;
 
     TextView twHeadTitle;
     EditText etEnterNumber1;
@@ -42,22 +43,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        twHeadTitle =findViewById(R.id.head_title);
-        etEnterNumber1 =findViewById(R.id.enterNumber1);
-        etEnterNumber2 =findViewById(R.id.enterNumber2);
-        twShowSymbol =findViewById(R.id.show_symbol);
-        twResult =findViewById(R.id.resultat);
+        twHeadTitle = findViewById(R.id.head_title);
+        etEnterNumber1 = findViewById(R.id.enterNumber1);
+        etEnterNumber2 = findViewById(R.id.enterNumber2);
+        twShowSymbol = findViewById(R.id.show_symbol);
+        twResult = findViewById(R.id.resultat);
 
-        btnVolymCylind=findViewById(R.id.btnVolymCylind);
-        btnAreaCirkel=findViewById(R.id.btnAreaCirkel);
-        btnPyta=findViewById(R.id.btnPyta);
-        btnProc=findViewById(R.id.btnProc);
-        btnRoten=findViewById(R.id.btnRoten);
-        btnMulti=findViewById(R.id.btnMulti);
-        btnDiv=findViewById(R.id.btnDiv);
-        btnMinus=findViewById(R.id.btnMinus);
-        btnPlus=findViewById(R.id.btnPlus);
-        btnLikaMed =findViewById(R.id.btnlikaMed);
+        btnVolymCylind = findViewById(R.id.btnVolymCylind);
+        btnAreaCirkel = findViewById(R.id.btnAreaCirkel);
+        btnPyta = findViewById(R.id.btnPyta);
+        btnProc = findViewById(R.id.btnProc);
+        btnRoten = findViewById(R.id.btnRoten);
+        btnMulti = findViewById(R.id.btnMulti);
+        btnDiv = findViewById(R.id.btnDiv);
+        btnMinus = findViewById(R.id.btnMinus);
+        btnPlus = findViewById(R.id.btnPlus);
+        btnLikaMed = findViewById(R.id.btnlikaMed);
+        btnClearAll = findViewById(R.id.btnClearAll);
 
 
         btnMinus.setOnClickListener(new View.OnClickListener() {
@@ -155,6 +157,14 @@ public class MainActivity extends AppCompatActivity {
                 etEnterNumber1.setHint(R.string.text_value_radius);
                 etEnterNumber2.setHint(R.string.text_value1_cylinder_height);
                 twShowSymbol.setTextSize(18);
+            }
+        });
+
+        btnClearAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetText();
+                clearFields();
             }
         });
 

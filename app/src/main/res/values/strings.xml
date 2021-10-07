@@ -3,7 +3,7 @@
 
     <string name="enter_number">Enter Number</string>
     <string name="enter_procent">Enter Percent</string>
-    
+    <string name="btn_clear">Clear</string>
 
     <string name="sym_sum"> + </string>
     <string name="sym_min"> - </string>
