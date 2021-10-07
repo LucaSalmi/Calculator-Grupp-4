@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
     Button btnLikaMed;
     Button btnClearAll;
 
-    TextView twHeadTitle;
+    TextView tvHeadTitle;
     EditText etEnterNumber1;
     EditText etEnterNumber2;
 
-    TextView twShowSymbol;
-    TextView twResult;
+    TextView tvShowSymbol;
+    TextView tvResult;
 
     double dbValue1;
     double dbValue2;
@@ -44,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        twHeadTitle = findViewById(R.id.head_title);
+        tvHeadTitle = findViewById(R.id.head_title);
         etEnterNumber1 = findViewById(R.id.enterNumber1);
         etEnterNumber2 = findViewById(R.id.enterNumber2);
-        twShowSymbol = findViewById(R.id.show_symbol);
-        twResult = findViewById(R.id.resultat);
+        tvShowSymbol = findViewById(R.id.show_symbol);
+        tvResult = findViewById(R.id.resultat);
 
         btnVolymCylind = findViewById(R.id.btnVolymCylind);
         btnAreaCirkel = findViewById(R.id.btnAreaCirkel);
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 resetText();
                 clearFields();
-                twResult.setText(" ");
+                tvResult.setText(" ");
             }
         });
 
@@ -176,53 +176,67 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Denna metod anropas i onClickListener för varje operationsknapp. Den gör följande:
+     *
+     * - Lägger in symbolen som motsvarar operationsknappen användaren tryckt på
+     * mellan de två inmatningsfölten
+     * - Anger (i fallen där operationen motsvarar en formel) formeln längst upp på sidan
+     * - Ändrar på hinten i inmatningsfälten i fallen där operationen motsvarar en formel,
+     * med text som förtydligar för användaren vilken del av formeln siffran hen matar in motsvarar
+     * - Tar bort det första inmatningsfältet i de fallen där operationen endast tar EN siffra
+     *
+     * @param operation motsvarar vilken operationsknapp användaren tryckt på
+     */
     private void textSetter(int operation){
         switch (operation){
             case 0: //subtraction
-                twShowSymbol.setText(R.string.sym_min);
+                tvShowSymbol.setText(R.string.sym_min);
                 break;
             case 1: //addition
-                twShowSymbol.setText(R.string.sym_sum);
+                tvShowSymbol.setText(R.string.sym_sum);
                 break;
             case 2: //multiplication
-                twShowSymbol.setText(R.string.sym_mult);
+                tvShowSymbol.setText(R.string.sym_mult);
                 break;
             case 3: //division
-                twShowSymbol.setText(R.string.sym_div);
+                tvShowSymbol.setText(R.string.sym_div);
                 break;
             case 4: //percentage
                 etEnterNumber1.setHint(R.string.enter_procent);
-                twShowSymbol.setText(R.string.procent_of);
+                tvShowSymbol.setText(R.string.percent_of);
                 break;
             case 5: //root
                 isTwoNumber = false;
                 etEnterNumber1.setVisibility(View.GONE);
-                twShowSymbol.setText(R.string.sym_ruten);
+                tvShowSymbol.setText(R.string.sym_ruten);
                 break;
             case 6: //Pythagoras
-                twShowSymbol.setText(R.string.sym_pytagoras);
-                twHeadTitle.setText(R.string.formel_pyta);
+                tvShowSymbol.setText(R.string.sym_pytagoras);
+                tvHeadTitle.setText(R.string.formel_pyta);
                 etEnterNumber1.setHint(R.string.text_value_pytaA);
                 etEnterNumber2.setHint(R.string.text_value_pytaB);
                 break;
             case 7: //Area of a circle
                 isTwoNumber = false;
                 etEnterNumber1.setVisibility(View.GONE);
-                twShowSymbol.setText(R.string.sym_cyrkel_area);
-                twHeadTitle.setText(R.string.formel_cirkel);
+                tvShowSymbol.setText(R.string.sym_cyrkel_area);
+                tvHeadTitle.setText(R.string.formel_cirkel);
                 etEnterNumber2.setHint(R.string.text_value_radius);
                 break;
             case 8: //Cylinder volume
-                twShowSymbol.setText(R.string.sym_cylinder);
-                twHeadTitle.setText(R.string.formel_cylind);
+                tvShowSymbol.setText(R.string.sym_cylinder);
+                tvHeadTitle.setText(R.string.formel_cylind);
                 etEnterNumber1.setHint(R.string.text_value_radius);
                 etEnterNumber2.setHint(R.string.text_value1_cylinder_height);
-                twShowSymbol.setTextSize(18);
+                tvShowSymbol.setTextSize(18);
                 break;
         }
     }
 
-
+    /**
+     *
+     */
     private void onInput(){
         getTextInput();
         switcher(operation, dbValue1, dbValue2);
@@ -230,15 +244,17 @@ public class MainActivity extends AppCompatActivity {
         resetText();
     }
 
-
+    /**
+     *
+     */
     private void getTextInput() {
 
         String value1 = etEnterNumber1.getText().toString();
         String value2 = etEnterNumber2.getText().toString();
-        String symbol = twShowSymbol.getText().toString();
+        String symbol = tvShowSymbol.getText().toString();
 
 
-        if (isTwoNumber == true) {
+        if (isTwoNumber) {
 
             if (TextUtils.isEmpty(value1) && TextUtils.isEmpty(value2)) {
                 showError(0);
@@ -284,13 +300,20 @@ public class MainActivity extends AppCompatActivity {
                 etEnterNumber2.setError("Enter Number");
                 break;
             case 3:
-                twResult.setError("Enter Number");
+                tvResult.setError("Enter Number");
                 break;
         }
     }
 
 
-
+    /**
+     * Utför den matematiska operationen som motsvarar operationsknappen användaren tryckt på
+     * och skickar resultatet till printFormat() som skriver ut resultatet i resultatsrutan
+     *
+     * @param operation motsvarar vilken operationsknapp användaren tryckt på
+     * @param dbValue1 motsvarar siffran som användaren lagt in i det första inmatningsfältet
+     * @param dbValue2 motsvarar siffran som användaren lagt in i det andra inmatningsfältet
+     */
     private void switcher(int operation, double dbValue1, double dbValue2){
 
         double result;
@@ -335,24 +358,38 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Tar in en double (resultatet av operationen som användaren valt att utföra)
+     * och skriver ut den i resultatfältet
+     *
+     * @param a är ett värde som ska skrivas ut i resultatfältet
+     */
     private void printFormat(double a){
         DecimalFormat df = new DecimalFormat("#.#####################");
         String print = df.format(a);
-        twResult.setText(print);
+        tvResult.setText(print);
     }
 
     /**
-     * Raderar Editview fältet efter vi trycker på likaMed
+     * Raderar användarens input från inmatningsfälten efter att användaren trycker på ClearAll-knappen
+     * Raderar operationssymbolen mellan inmatningsfälten
+     * Återställer isTwoNumber till true så att ...
       */
     private void clearFields(){
         etEnterNumber1.getText().clear();
         etEnterNumber2.getText().clear();
-        twShowSymbol.setText(R.string.empty_field);
+        tvShowSymbol.setText(R.string.empty_field);
         isTwoNumber = true;
     }
+
+    /**
+     * Återställer texten högst upp på sidan till appens namn
+     * Återställer det första EditText-fältet till synlig
+     * Återställer hinten i EditText-fälten till "Enter Number"
+     */
     private void resetText(){
 
-        twHeadTitle.setText(R.string.app_name);
+        tvHeadTitle.setText(R.string.app_name);
         etEnterNumber1.setVisibility(View.VISIBLE);
         etEnterNumber1.setHint(R.string.enter_number);
         etEnterNumber2.setHint(R.string.enter_number);

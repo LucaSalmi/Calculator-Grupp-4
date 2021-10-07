@@ -23,7 +23,7 @@
     <string name="text_value_pytaA">Enter a</string>
     <string name="text_value_pytaB">Enter b</string>
     <string name="text_value1_cylinder_height">Enter Height</string>
-    <string name="procent_of">% of</string>
+    <string name="percent_of">% of</string>
     <string name="empty_field" />
 
 </resources>
