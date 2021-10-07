@@ -347,7 +347,7 @@ public class MainActivity extends AppCompatActivity {
     private void clearFields(){
         etEnterNumber1.getText().clear();
         etEnterNumber2.getText().clear();
-        twShowSymbol.setText("");
+        twShowSymbol.setText(R.string.empty_field);
         isTwoNumber = true;
     }
     private void resetText(){
