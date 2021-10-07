@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,98 +66,88 @@ public class MainActivity extends AppCompatActivity {
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetText();
                 operation = 0;
-                twShowSymbol.setText(R.string.sym_min);
-
+                resetText();
+                changeField();
+                textSetter(operation);
             }
         });
 
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetText();
                 operation = 1;
-                twShowSymbol.setText(R.string.sym_sum);
+                resetText();
+                changeField();
+                textSetter(operation);
             }
         });
 
         btnMulti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetText();
                 operation = 2;
-                twShowSymbol.setText(R.string.sym_mult);
+                resetText();
+                changeField();
+                textSetter(operation);
             }
         });
 
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetText();
                 operation = 3;
-                twShowSymbol.setText(R.string.sym_div);
+                resetText();
+                changeField();
+                textSetter(operation);
             }
         });
 
         btnProc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetText();
                 operation = 4;
-                etEnterNumber1.setHint(R.string.enter_procent);
-                twShowSymbol.setText(R.string.procent_of);
+                resetText();
+                changeField();
+                textSetter(operation);
             }
         });
 
         btnRoten.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetText();
                 operation = 5;
-                isTwoNumber = false;
-                etEnterNumber1.setVisibility(View.GONE);
-                twShowSymbol.setText(R.string.sym_ruten);
-
+                resetText();
+                textSetter(operation);
             }
         });
 
         btnPyta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetText();
                 operation = 6;
-                twShowSymbol.setText(R.string.sym_pytagoras);
-                twHeadTitle.setText(R.string.formel_pyta);
-                etEnterNumber1.setHint(R.string.text_value_pytaA);
-                etEnterNumber2.setHint(R.string.text_value_pytaB);
-
+                resetText();
+                changeField();
+                textSetter(operation);
             }
         });
 
         btnAreaCirkel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetText();
                 operation = 7;
-                isTwoNumber = false;
-                etEnterNumber1.setVisibility(View.GONE);
-                twShowSymbol.setText(R.string.sym_cyrkel_area);
-                twHeadTitle.setText(R.string.formel_cirkel);
-                etEnterNumber2.setHint(R.string.text_value_radius);
+                resetText();
+                textSetter(operation);
             }
         });
 
         btnVolymCylind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetText();
                 operation = 8;
-                twShowSymbol.setText(R.string.sym_cylinder);
-                twHeadTitle.setText(R.string.formel_cylind);
-                etEnterNumber1.setHint(R.string.text_value_radius);
-                etEnterNumber2.setHint(R.string.text_value1_cylinder_height);
-                twShowSymbol.setTextSize(18);
+                resetText();
+                changeField();
+                textSetter(operation);
             }
         });
 
@@ -165,18 +156,78 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 resetText();
                 clearFields();
+                twResult.setText(" ");
+            }
+        });
+
+        etEnterNumber2.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                onInput();
+                return false;
             }
         });
 
         btnLikaMed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getTextInput();
-                switcher(operation, dbValue1, dbValue2);
-                clearFields();
-                resetText();
+                onInput();
             }
         });
+    }
+
+    private void textSetter(int operation){
+        switch (operation){
+            case 0: //subtraction
+                twShowSymbol.setText(R.string.sym_min);
+                break;
+            case 1: //addition
+                twShowSymbol.setText(R.string.sym_sum);
+                break;
+            case 2: //multiplication
+                twShowSymbol.setText(R.string.sym_mult);
+                break;
+            case 3: //division
+                twShowSymbol.setText(R.string.sym_div);
+                break;
+            case 4: //percentage
+                etEnterNumber1.setHint(R.string.enter_procent);
+                twShowSymbol.setText(R.string.procent_of);
+                break;
+            case 5: //root
+                isTwoNumber = false;
+                etEnterNumber1.setVisibility(View.GONE);
+                twShowSymbol.setText(R.string.sym_ruten);
+                break;
+            case 6: //Pythagoras
+                twShowSymbol.setText(R.string.sym_pytagoras);
+                twHeadTitle.setText(R.string.formel_pyta);
+                etEnterNumber1.setHint(R.string.text_value_pytaA);
+                etEnterNumber2.setHint(R.string.text_value_pytaB);
+                break;
+            case 7: //Area of a circle
+                isTwoNumber = false;
+                etEnterNumber1.setVisibility(View.GONE);
+                twShowSymbol.setText(R.string.sym_cyrkel_area);
+                twHeadTitle.setText(R.string.formel_cirkel);
+                etEnterNumber2.setHint(R.string.text_value_radius);
+                break;
+            case 8: //Cylinder volume
+                twShowSymbol.setText(R.string.sym_cylinder);
+                twHeadTitle.setText(R.string.formel_cylind);
+                etEnterNumber1.setHint(R.string.text_value_radius);
+                etEnterNumber2.setHint(R.string.text_value1_cylinder_height);
+                twShowSymbol.setTextSize(18);
+                break;
+        }
+    }
+
+
+    private void onInput(){
+        getTextInput();
+        switcher(operation, dbValue1, dbValue2);
+        clearFields();
+        resetText();
     }
 
 
@@ -185,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
         String value1 = etEnterNumber1.getText().toString();
         String value2 = etEnterNumber2.getText().toString();
         String symbol = twShowSymbol.getText().toString();
+
 
         if (isTwoNumber == true) {
 
@@ -206,6 +258,15 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         dbValue2 = Double.parseDouble(value2);
+    }
+
+    public void changeField(){
+        String temp = etEnterNumber1.getText().toString();
+
+        if(TextUtils.isEmpty(temp)){
+            return;
+        }
+        etEnterNumber2.requestFocus();
     }
 
     public void showError(int id){
