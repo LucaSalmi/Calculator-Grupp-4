@@ -1,5 +1,7 @@
 package com.example.kalkylator;
 
+//Skapad av grupp 4:
+
 //Joakim Andersson
 //Joanne Yager
 //Sarah Lidberg
