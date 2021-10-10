@@ -193,36 +193,42 @@ public class MainActivity extends AppCompatActivity {
     private void textSetter(int operation) {
         switch (operation) {
             case 1: //subtraction
+                tvHeadTitle.setText(R.string.app_name);
                 tvShowSymbol.setText(R.string.sym_min);
                 etEnterNumber1.setHint(R.string.enter_number);
                 etEnterNumber2.setHint(R.string.enter_number);
                 tvShowSymbol.setTextSize(25);
                 break;
             case 2: //addition
+                tvHeadTitle.setText(R.string.app_name);
                 tvShowSymbol.setText(R.string.sym_sum);
                 etEnterNumber1.setHint(R.string.enter_number);
                 etEnterNumber2.setHint(R.string.enter_number);
                 tvShowSymbol.setTextSize(25);
                 break;
             case 3: //multiplication
+                tvHeadTitle.setText(R.string.app_name);
                 tvShowSymbol.setText(R.string.sym_mult);
                 etEnterNumber1.setHint(R.string.enter_number);
                 etEnterNumber2.setHint(R.string.enter_number);
                 tvShowSymbol.setTextSize(25);
                 break;
             case 4: //division
+                tvHeadTitle.setText(R.string.app_name);
                 tvShowSymbol.setText(R.string.sym_div);
                 etEnterNumber1.setHint(R.string.enter_number);
                 etEnterNumber2.setHint(R.string.enter_number);
                 tvShowSymbol.setTextSize(25);
                 break;
             case 5: //percentage
+                tvHeadTitle.setText(R.string.app_name);
                 etEnterNumber1.setHint(R.string.enter_procent);
                 tvShowSymbol.setText(R.string.percent_of);
                 etEnterNumber2.setHint(R.string.enter_number);
                 tvShowSymbol.setTextSize(25);
                 break;
             case 6: //root
+                tvHeadTitle.setText(R.string.app_name);
                 isTwoNumber = false;
                 etEnterNumber1.setVisibility(View.GONE);
                 tvShowSymbol.setText(R.string.sym_ruten);
@@ -282,7 +288,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-
         if (isTwoNumber) {
 
             if (TextUtils.isEmpty(value1) && TextUtils.isEmpty(value2)) {
@@ -320,8 +325,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * (Anropas i getTextInput())
      * <p>
-     * Visar felmeddelande i obligatoriska inmatningsfält som saknar värden eller om användaren
-     * inte tryckt på någon operationsknapp
+     * Visar felmeddelande i obligatoriska inmatningsfält som saknar värden.
      *
      * @param id motsvarar vilka felmeddelanden som ska visas
      */
@@ -400,7 +404,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * (Anropas i switcher())
+     * (Anropas i calculateResult())
      * <p>
      * Tar in resultatet av operationen som användaren valt genom att trycka på en operationsknapp,
      * skriver ut resultatet i resultatfältet
@@ -425,7 +429,7 @@ public class MainActivity extends AppCompatActivity {
      * - Återställer operationssymbolens storlek
      */
     private void clearFields() {
-        tvResult.setText(" ");
+        tvResult.setText("");
         etEnterNumber1.getText().clear();
         etEnterNumber2.getText().clear();
         tvShowSymbol.setText(R.string.empty_field);
@@ -435,8 +439,6 @@ public class MainActivity extends AppCompatActivity {
         etEnterNumber1.setHint(R.string.enter_number);
         etEnterNumber2.setHint(R.string.enter_number);
         tvShowSymbol.setTextSize(25);
-
-
     }
 }
 
