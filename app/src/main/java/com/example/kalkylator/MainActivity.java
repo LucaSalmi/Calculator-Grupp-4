@@ -1,5 +1,10 @@
 package com.example.kalkylator;
 
+//Joakim Andersson
+//Joanne Yager
+//Sarah Lidberg
+//Luca Salmi
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
