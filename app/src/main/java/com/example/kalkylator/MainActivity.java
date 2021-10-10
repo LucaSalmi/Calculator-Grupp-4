@@ -406,7 +406,7 @@ public class MainActivity extends AppCompatActivity {
      * - Raderar användarens input från inmatningsfälten
      * - Raderar operationssymbolen mellan inmatningsfälten
      * - Återställer isTwoNumber till true
-      */
+     */
     private void clearFields(){
         etEnterNumber1.getText().clear();
         etEnterNumber2.getText().clear();
@@ -421,6 +421,7 @@ public class MainActivity extends AppCompatActivity {
      * - Återställer texten högst upp på sidan till appens namn
      * - Återställer det första EditText-fältet till synlig
      * - Återställer hinten i EditText-fälten till "Enter Number"
+     * Återställer operations symbolens storlek
      */
     private void resetText(){
 
@@ -428,6 +429,7 @@ public class MainActivity extends AppCompatActivity {
         etEnterNumber1.setVisibility(View.VISIBLE);
         etEnterNumber1.setHint(R.string.enter_number);
         etEnterNumber2.setHint(R.string.enter_number);
+        tvShowSymbol.setTextSize(25);
 
     }
 }
