@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 resetText();
                 changeField();
                 textSetter(operation);
+                etEnterNumber1.setVisibility(View.VISIBLE);
             }
         });
 
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 resetText();
                 changeField();
                 textSetter(operation);
+                etEnterNumber1.setVisibility(View.VISIBLE);
             }
         });
 
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 resetText();
                 changeField();
                 textSetter(operation);
+                etEnterNumber1.setVisibility(View.VISIBLE);
             }
         });
 
@@ -100,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 resetText();
                 changeField();
                 textSetter(operation);
+                etEnterNumber1.setVisibility(View.VISIBLE);
             }
         });
 
@@ -110,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 resetText();
                 changeField();
                 textSetter(operation);
+                etEnterNumber1.setVisibility(View.VISIBLE);
             }
         });
 
@@ -129,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 resetText();
                 changeField();
                 textSetter(operation);
+                etEnterNumber1.setVisibility(View.VISIBLE);
             }
         });
 
@@ -148,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
                 resetText();
                 changeField();
                 textSetter(operation);
+                etEnterNumber1.setVisibility(View.VISIBLE);
             }
         });
 
@@ -156,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 resetText();
                 clearFields();
-                tvResult.setText(" ");
+
             }
         });
 
@@ -245,7 +252,6 @@ public class MainActivity extends AppCompatActivity {
     private void onInput(){
         getTextInput();
         switcher(operation, dbValue1, dbValue2);
-        clearFields();
         resetText();
     }
 
@@ -400,18 +406,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * (Anropas när användaren trycker på ClearAll-knappen, eller via onInput() när användaren
-     * trycker på LikaMed-knappen / matar in ett värde i andra inmatningsfältet)
+     * (Anropas när användaren trycker på ClearAll-knappen.
      *
      * - Raderar användarens input från inmatningsfälten
      * - Raderar operationssymbolen mellan inmatningsfälten
      * - Återställer isTwoNumber till true
+     *  - Återställer det första EditText-fältet till synlig
      */
     private void clearFields(){
+        tvResult.setText(" ");
         etEnterNumber1.getText().clear();
         etEnterNumber2.getText().clear();
         tvShowSymbol.setText(R.string.empty_field);
         isTwoNumber = true;
+        etEnterNumber1.setVisibility(View.VISIBLE);
+
     }
 
     /**
@@ -419,14 +428,12 @@ public class MainActivity extends AppCompatActivity {
      * när användaren trycker på LikaMed-knappen / matar in ett värde i andra inmatningsfältet)
      *
      * - Återställer texten högst upp på sidan till appens namn
-     * - Återställer det första EditText-fältet till synlig
      * - Återställer hinten i EditText-fälten till "Enter Number"
      * - Återställer operationssymbolens storlek
      */
     private void resetText(){
 
         tvHeadTitle.setText(R.string.app_name);
-        etEnterNumber1.setVisibility(View.VISIBLE);
         etEnterNumber1.setHint(R.string.enter_number);
         etEnterNumber2.setHint(R.string.enter_number);
         tvShowSymbol.setTextSize(25);
