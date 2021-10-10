@@ -263,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void onInput() {
         getTextInput();
-        switcher(operation, dbValue1, dbValue2);
+        calculateResult(operation, dbValue1, dbValue2);
     }
 
     /**
@@ -355,7 +355,7 @@ public class MainActivity extends AppCompatActivity {
      * @param dbValue1  motsvarar värdet som användaren matat in i det första inmatningsfältet
      * @param dbValue2  motsvarar värdet som användaren matat in i det andra inmatningsfältet
      */
-    private void switcher(int operation, double dbValue1, double dbValue2) {
+    private void calculateResult(int operation, double dbValue1, double dbValue2) {
 
         double result;
 
