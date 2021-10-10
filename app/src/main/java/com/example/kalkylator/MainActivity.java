@@ -177,14 +177,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Denna metod anropas i onClickListener för varje operationsknapp. Den gör följande:
+     * (Anropas i onClickListener för varje operationsknapp)
      *
-     * - Lägger in symbolen som motsvarar operationsknappen användaren tryckt på
-     * mellan de två inmatningsfölten
-     * - Anger (i fallen där operationen motsvarar en formel) formeln längst upp på sidan
-     * - Ändrar på hinten i inmatningsfälten i fallen där operationen motsvarar en formel,
-     * med text som förtydligar för användaren vilken del av formeln siffran hen matar in motsvarar
-     * - Tar bort det första inmatningsfältet i de fallen där operationen endast tar EN siffra
+     * - Visar symbolen som motsvarar operationsknappen användaren tryckt på
+     * mellan inmatningsfölten
+     * - Visar (i fallen där operationen motsvarar en formel) formeln längst upp på sidan
+     * - Ändrar hinten i inmatningsfälten i fallen där operationen motsvarar en formel,
+     * med text som förtydligar för användaren vilken del av formeln önskad inmatning motsvarar
+     * - Tar bort det första inmatningsfältet i de fallen där endast tar ett värde krävs
      *
      * @param operation motsvarar vilken operationsknapp användaren tryckt på
      */
@@ -235,7 +235,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * (Anropas när användaren trycker på LikaMed-knappen eller matar in ett värde i andra
+     * inmatningsfältet)
      *
+     * Anropar metoder som gör att värdena som användaren matat in och operationsknappen som
+     * användaren tryckt på läses av, motsvarade operation utförs, och utseendet återställs till sitt
+     * ursprungliga tillstånd
      */
     private void onInput(){
         getTextInput();
@@ -245,7 +250,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * (Anropas när användaren trycker på LikaMed-knappen eller matar in ett värde i andra
+     * inmatningsfältet, via onInput())
      *
+     * - Läser in de värden som användaren matat in i inmatningsfälten
+     * - Visar felmeddelande ifall värde saknas i ett obligatoriskt fält
      */
     private void getTextInput() {
 
@@ -276,6 +285,12 @@ public class MainActivity extends AppCompatActivity {
         dbValue2 = Double.parseDouble(value2);
     }
 
+    /**
+     * (Anropas i onClickListener för alla operationsknappar som kräver två värden)
+     *
+     * Hoppar till andra inmatningsfältet när användaren matat in ett värde i första inmatningsfältet
+     * och tryckt på en operationsknapp
+     */
     public void changeField(){
         String temp = etEnterNumber1.getText().toString();
 
@@ -284,6 +299,15 @@ public class MainActivity extends AppCompatActivity {
         }
         etEnterNumber2.requestFocus();
     }
+
+    /**
+     * (Anropas i getTextInput())
+     *
+     * Visar felmeddelande i obligatoriska inmatningsfält som saknar värden eller om användaren
+     * inte tryckt på någon operationsknapp
+     *
+     * @param id motsvarar vilka felmeddelanden som ska visas
+     */
 
     public void showError(int id){
 
@@ -307,12 +331,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * Utför den matematiska operationen som motsvarar operationsknappen användaren tryckt på
+     * (Anropas när användaren trycker på LikaMed-knappen eller matar in ett värde i andra
+     * inmatningsfältet, via onInput())
+     *
+     * Utför den matematiska operation som motsvarar operationsknappen användaren tryckt på
      * och skickar resultatet till printFormat() som skriver ut resultatet i resultatsrutan
      *
      * @param operation motsvarar vilken operationsknapp användaren tryckt på
-     * @param dbValue1 motsvarar siffran som användaren lagt in i det första inmatningsfältet
-     * @param dbValue2 motsvarar siffran som användaren lagt in i det andra inmatningsfältet
+     * @param dbValue1 motsvarar värdet som användaren matat in i det första inmatningsfältet
+     * @param dbValue2 motsvarar värdet som användaren matat in i det andra inmatningsfältet
      */
     private void switcher(int operation, double dbValue1, double dbValue2){
 
@@ -359,10 +386,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Tar in en double (resultatet av operationen som användaren valt att utföra)
-     * och skriver ut den i resultatfältet
+     * (Anropas i switcher())
      *
-     * @param a är ett värde som ska skrivas ut i resultatfältet
+     * Tar in resultatet av operationen som användaren valt genom att trycka på en operationsknapp,
+     * skriver ut resultatet i resultatfältet
+     *
+     * @param a är det värde som ska skrivas ut i resultatfältet
      */
     private void printFormat(double a){
         DecimalFormat df = new DecimalFormat("#.#####################");
@@ -371,9 +400,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Raderar användarens input från inmatningsfälten efter att användaren trycker på ClearAll-knappen
-     * Raderar operationssymbolen mellan inmatningsfälten
-     * Återställer isTwoNumber till true så att ...
+     * (Anropas när användaren trycker på ClearAll-knappen, eller via onInput() när användaren
+     * trycker på LikaMed-knappen / matar in ett värde i andra inmatningsfältet)
+     *
+     * - Raderar användarens input från inmatningsfälten
+     * - Raderar operationssymbolen mellan inmatningsfälten
+     * - Återställer isTwoNumber till true
       */
     private void clearFields(){
         etEnterNumber1.getText().clear();
@@ -383,9 +415,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Återställer texten högst upp på sidan till appens namn
-     * Återställer det första EditText-fältet till synlig
-     * Återställer hinten i EditText-fälten till "Enter Number"
+     * (Anropas när användaren trycker på en operationsknapp, ClearAll-knappen, och via onInput()
+     * när användaren trycker på LikaMed-knappen / matar in ett värde i andra inmatningsfältet)
+     *
+     * - Återställer texten högst upp på sidan till appens namn
+     * - Återställer det första EditText-fältet till synlig
+     * - Återställer hinten i EditText-fälten till "Enter Number"
      */
     private void resetText(){
 
